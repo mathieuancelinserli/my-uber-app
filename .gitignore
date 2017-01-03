@@ -1,0 +1,10 @@
+/RUNNING_PID
+/logs/
+/project/*-shim.sbt
+/project/project/
+/project/target/
+/target/
+/app-2.11
+/tests-2.11
+.ensime
+.ensime_cache
