@@ -11,6 +11,9 @@ object HomeController {
   implicit val mat = Env.defaultMaterializer
 
   def index = Action.sync { ctx =>
+    val appId = Option(System.getenv("APP_ID")).getOrElse("none")
+    val commitId = Option(System.getenv("COMMIT_ID")).getOrElse("none")
+    val instanceNumber = Option(System.getenv("INSTANCE_NUMBER")).getOrElse("none")
     Ok.json(Json.obj(
       "scheme" -> ctx.scheme,
       "port" -> ctx.port,
@@ -19,7 +22,10 @@ object HomeController {
       "uri" -> ctx.uri,
       "sourceAddress" -> ctx.sourceAddress.toString(),
       "queryString" -> ctx.queryString,
-      "localAddress" -> java.net.InetAddress.getLocalHost().getHostAddress()
+      "localAddress" -> java.net.InetAddress.getLocalHost().getHostAddress(),
+      "appId" -> appId,
+      "commitId" -> commitId,
+      "instanceNumber" -> instanceNumber
     ))
   }
 }
