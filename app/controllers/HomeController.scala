@@ -14,7 +14,7 @@ object HomeController {
     val appId = Option(System.getenv("APP_ID")).getOrElse("none")
     val commitId = Option(System.getenv("COMMIT_ID")).getOrElse("none")
     val instanceNumber = Option(System.getenv("INSTANCE_NUMBER")).getOrElse("none")
-    Ok.json(Json.obj(
+    Ok.json(Json.prettyPrint(Json.obj(
       "scheme" -> ctx.scheme,
       "port" -> ctx.port,
       "host" -> ctx.hostName,
@@ -26,6 +26,6 @@ object HomeController {
       "appId" -> appId,
       "commitId" -> commitId,
       "instanceNumber" -> instanceNumber
-    ))
+    )))
   }
 }
